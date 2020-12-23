@@ -221,6 +221,6 @@ def draw(x, res1, res2, is_test):
 
     plt.show()
 
-x, res1, res2, e = data(0, 600)
-draw(x, res1, res2, 0)
-print(max(e))
+# x, res1, res2, e = data(0, 600)
+# draw(x, res1, res2, 0)
+# print(max(e))
