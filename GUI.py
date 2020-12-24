@@ -3,6 +3,7 @@ import Lab2_num as ln
 import matplotlib
 import matplotlib.pyplot as plt
 # from itertools import count, izip
+import pandas as pd
 
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -34,9 +35,9 @@ class RungeKuttaGUI:
         self.button.configure(text="График")
         self.button.place(x=50, y=0)
 
-        self.button1 = ttk.Button(master=self.window, command=self.table)
-        self.button1.configure(text="Таблица")
-        self.button1.place(x=50, y=30)
+        # self.button1 = ttk.Button(master=self.window, command=self.table)
+        # self.button1.configure(text="Таблица")
+        # self.button1.place(x=50, y=30)
         #
         # self.button2 = ttk.Button(master=self.window, command=self.insert_text)
         # self.button2.configure(text="Условие задачи")
@@ -74,6 +75,18 @@ class RungeKuttaGUI:
         r_var = bool(self.r_var.get())
 
         y, res1, res2, e = ln.data(r_var, n)
+        data = []
+        for i in range(len(y)):
+            point = {'xn': y[i], 'u': res1[i], 'v': res2[i], 'u - v': res1[i] - res2[i]}
+            data.append(point)
+        df = pd.DataFrame(data)
+        # print(df.to_string())
+
+        with open('results.txt', 'w') as f:
+            f.write(df.to_string())
+        max_e = max(e, key=lambda p: abs(p))
+        point = e.index(max_e)
+        self.output_values(max_e, y[point])
 
         ln.draw(y, res1, res2, int(r_var))
 

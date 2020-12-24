@@ -188,6 +188,8 @@ def data(is_test, n):
 def draw(x, res1, res2, is_test):
     fig, ax = plt.subplots()
     fig1, ax1 = plt.subplots()
+    # ax = plt.subplots()
+    # ax1 = plt.subplots()
     y = []
     if is_test:
         print(res1)
