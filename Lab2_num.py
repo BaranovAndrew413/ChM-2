@@ -5,7 +5,7 @@ ksi = np.pi/4
 
 
 def k1(x):
-    return np.sin(x)*np.sqrt(2)
+    return np.sin(x)*np.sqrt(2)+1
 
 def k2(x):
     return np.cos(x)*np.cos(x)
